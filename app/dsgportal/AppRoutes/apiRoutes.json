@@ -1,0 +1,44 @@
+{
+    "farmers": {
+        "base": "/api/dsgportal/farmers/farmers",
+        "delete": "/api/dsgportal/farmers/delete"
+    },
+    "milkcollections": {
+        "base": "/api/dsgportal/milkcollections/milkcollections",
+        "delete": "/api/dsgportal/milkcollections/delete"
+    },
+    "graderslist": {
+        "base": "/api/dairysacco/graders/graderslist",
+        "delete": "/api/dairysacco/graders/delete"
+    },
+    "smsmessages": {
+        "base": "/api/dsgportal/smsbox/smsmessages",
+        "delete": "/api/dsgportal/smsbox/delete"
+    },
+    "appcore": {
+        "sendsms": "https://asanetic.com/sms/sendsms"
+    },
+    "farmerscollectionhistory": {
+        "base": "/api/dsgportal/farmercollections/farmerscollectionhistory",
+        "delete": "/api/dsgportal/farmercollections/delete"
+    },
+    "graderscollectionreport": {
+        "base": "/api/dairysacco/graderscollections/graderscollectionreport",
+        "delete": "/api/dairysacco/graderscollections/delete"
+    },
+    "myaccount": {
+        "base": "/api/dairysacco/accounts/myaccount",
+        "delete": "/api/dairysacco/accounts/delete"
+    },
+    "": {
+        "base": "/api/dsgportal//",
+        "delete": "/api/dsgportal//delete"
+    },
+    "systemusersmanagement": {
+        "base": "/api/dairysacco/users/systemusersmanagement",
+        "delete": "/api/dairysacco/users/delete"
+    },
+    "dashboard": {
+        "admin": "/api/dairysacco/dashboard/admin"
+    }
+}
