@@ -7,7 +7,7 @@ const commonRoot = ""; // Update this path if needed
 
 const mosyThemeConfigs = {
   // App Identity
-  mosyAppName: "Graders dairy society",
+  mosyAppName: "Graders portal",
   mosySystemName: "dairysacco",
   mosyAppLogo: logo.src,
   mosyAppLogoStyle: {

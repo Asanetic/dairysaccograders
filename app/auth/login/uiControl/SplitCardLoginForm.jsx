@@ -13,17 +13,17 @@ export default function SplitCardLoginForm({
   registerUrl = '#',
 }) {
   return (
-    <div className="elforge_login_v2_wrapper">
-      <div className="elforge_login_card shadow-lg rounded-4 overflow-hidden">
-        <div className="elforge_login_left">
+    <div className="row justify-content-center col-md-12 p-0 m-0">
+      <div className=" shadow-lg col-md-8 p-0 m-3 row justify-content-center ">
+        <div className="col-md-6 d-lg-block p-0 m-0  d-none">
           <div
-            className="elforge_login_bg"
-            style={{ backgroundImage: `url('${loginBgImg}')` }}
+            className="p-0 m-0 col-md-12"
+            style={{ backgroundImage: `url('${loginBgImg}'); min-height:100vh;background-repeat:no-repeat;background-size:cover;background-position:center` }}
           />
         </div>
 
-        <div className="elforge_login_right">
-          <div className="elforge_login_content">
+        <div className="col-md-6 p-0 m-0 row justify-content-center " style={{minHeight:"100vh"}}> 
+          <div className="col-md-10 p-lg-0 m-0 pt-5 row justify-content-center  ">
             <MainLoginInputs
               showCreateAccount={showCreateAccount}
               appName={appName}
@@ -32,69 +32,11 @@ export default function SplitCardLoginForm({
               changePasswordUrl={changePasswordUrl}
               registerUrl={registerUrl}
             />
-            <div className="pt-3" id="alert_box" />
+            <div className="" id="alert_box" />
           </div>
         </div>
       </div>
 
-      <style jsx>{`
-        .elforge_login_v2_wrapper {
-          min-height: 100vh;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: #f8f9fa;
-          padding: 1rem;
-        }
-
-        .elforge_login_card {
-          display: flex;
-          width: 100%;
-          max-width: 70%;
-          background: #fff;
-          min-height: 500px;
-        }
-
-        .elforge_login_left,
-        .elforge_login_right {
-          flex: 1;
-        }
-
-        .elforge_login_bg {
-          width: 100%;
-          height: 100%;
-          background-size: cover;
-          background-position: center;
-        }
-
-        .elforge_login_content h1 {
-          font-size: 20px!important;
-         }
-
-        .elforge_login_right {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 2rem;
-          background-color: #ffffff;
-        }
-
-        .elforge_login_content {
-          width: 100%;
-          max-width: 400px;
-        }
-
-        @media (max-width: 768px) {
-          .elforge_login_card {
-            flex-direction: column;
-            min-height: auto;
-          }
-
-          .elforge_login_left {
-            height: 200px;
-          }
-        }
-      `}</style>
     </div>
   );
 }
