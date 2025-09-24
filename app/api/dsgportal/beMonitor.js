@@ -12,6 +12,7 @@ export function mosyDsfFilter(src, authData) {
     const filters = {
       global_filter: `hive_site_id='${authData?.hive_site_id}'`,
       milk_collections: `grader_id='${authData?.grader_id}'`,
+      farmers: `grader_id='${authData?.grader_id}'`,
 
       // Add more table-specific filters here if needed
     };

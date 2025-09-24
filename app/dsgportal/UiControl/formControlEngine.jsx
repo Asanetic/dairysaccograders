@@ -2,7 +2,7 @@
 const controlMap = {
     
      milk_collections: {
-      generated_sms: {input: { readOnly: true, required: false}, cellClass: "bg-light p-3 rounded_medium"},
+      generated_sms: {input: { readOnly: true, required: false}, cellClass: "d-none bg-light p-3 rounded_medium"},
      },
 
      sms: {

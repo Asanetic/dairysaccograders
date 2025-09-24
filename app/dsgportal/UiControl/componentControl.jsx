@@ -72,7 +72,7 @@ function isComponentEnabled(tblName, actionType = 'cu') {
   if(tblName=="FarmerscollectionhistoryList" && action==="add_new"){return false}  
   if(tblName=="FarmerscollectionhistoryList" && action==="DDedit"){return false}  
   
-  if(tblName=="MilkcollectionsMainProfilePage" && (action==="clone" || action==="delete"))
+  if(tblName=="MilkcollectionsMainProfilePage" && (action==="clone" || action==="delete" || action==="showUpdate"))  
   {
     return false
   }
@@ -140,6 +140,7 @@ export function SubmitButtons({src, tblName, extraClass = '' }) {
 
   const isCloneEnabled = isComponentEnabled(src, "clone")
   const isButtontEnabled = isComponentEnabled(src, "submit")
+  const showSaveChanges = isComponentEnabled(src, "showUpdate")
 
   if(!isButtontEnabled)
   {
@@ -150,6 +151,7 @@ export function SubmitButtons({src, tblName, extraClass = '' }) {
     <>
       {isUpdate ? (
         <>
+        {showSaveChanges && (
           <button
             type="submit"
             id={`mp${tblName}_update_btn`}
@@ -158,7 +160,7 @@ export function SubmitButtons({src, tblName, extraClass = '' }) {
           >
             <i className="fa fa-save"></i> Save Changes
           </button>
-
+        )}
          {isCloneEnabled &&(
           <button
             type="submit"

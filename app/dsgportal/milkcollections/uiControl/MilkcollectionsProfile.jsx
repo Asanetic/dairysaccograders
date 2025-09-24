@@ -51,7 +51,7 @@ const apiRoutes = getApiRoutes();
 import MilkcollectionsList from '../../milkcollections/uiControl/MilkcollectionsList';
 
 //button function imports
-import { formartGradersMessage } from "../../AppCore/coreUtils";
+import { confirmSendSMS, formartGradersMessage, sendSMSAfterDataSubmission, setFormInputsReadonly } from "../../AppCore/coreUtils";
 
 
 // export profile
@@ -101,11 +101,18 @@ export default function MilkcollectionsProfile({ dataIn = {}, dataOut = {} }) {
   //use route navigation system
   const router = useRouter();
   
+  
   //manage post form
   function postMilkcollectionsFormData(e) {
     
+    e.preventDefault();
+
+    formartGradersMessage(false,handleInputChange)
+
+    confirmSendSMS(()=>{
+
     MosyNotify({message: "Sending request",icon:"send"})
-    
+
     inteprateMilkcollectionsFormAction(e, stateItemSetters).then(response=>{
       
       setChildDataOut({
@@ -125,10 +132,12 @@ export default function MilkcollectionsProfile({ dataIn = {}, dataOut = {} }) {
       //focus on this form on submission
       stateItemSetters.setActiveScrollId("MilkcollectionsProfileTray")
       mosyScrollTo(activeScrollId)
-      
+
+      sendSMSAfterDataSubmission(handleInputChange, stateItemSetters)
       closeMosyModal()
       
     })
+  })
     
   }
   
@@ -138,14 +147,14 @@ export default function MilkcollectionsProfile({ dataIn = {}, dataOut = {} }) {
     
     mosyScrollTo(activeScrollId)
     
+
   }, [localEventSignature]);
   
   
   
   //child queries use effect
   
-  
-  
+
   return (
     
     <div className="p-0 col-md-12 text-center row justify-content-center m-0  " id="MilkcollectionsProfileTray">
@@ -194,11 +203,12 @@ export default function MilkcollectionsProfile({ dataIn = {}, dataOut = {} }) {
                 {paramMilkcollectionsUptoken && (
                   <>
                   
-                  <MosyActionButton
+                  {/* <MosyActionButton
                   label=" Send SMS "
                   icon="send"
+                  className='d-none'
                   onClick={()=>{formartGradersMessage(true,handleInputChange)}}
-                  />
+                  /> */}
                   
                 </>
               )}

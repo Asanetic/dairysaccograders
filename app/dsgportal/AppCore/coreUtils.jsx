@@ -1,9 +1,9 @@
 import { mosy_push_data, mosyBtoa, mosyGetElemVal, mosyPostData, mosyPostFormData, mosyUpdateUrlParam } from "../../MosyUtils/hiveUtils";
-import { MosyAlertCard, MosyNotify } from "../../MosyUtils/ActionModals";
+import { MosyAlertCard, MosyConfirm, MosyNotify } from "../../MosyUtils/ActionModals";
 
 import { getApiRoutes } from '../AppRoutes/apiRoutesHandler';
 
-import { updateMilkcollections } from "../milkcollections/dataControl/MilkcollectionsRequestHandler";
+import { initMilkcollectionsProfileData, milkcollectionsProfileData, updateMilkcollections } from "../milkcollections/dataControl/MilkcollectionsRequestHandler";
 
 const apiRoutes = getApiRoutes(); // Use the imported JSON directly
 
@@ -121,3 +121,38 @@ export function formartGradersMessage(send, inputHandler)
  return message;
 
 }
+
+// utils/setReadonly.js
+export function setFormInputsReadonly(formId, readonly = true) {
+  const form = document.getElementById(formId);
+  if (!form) return;
+
+  // Grab all inputs, textareas, and selects
+  const fields = form.querySelectorAll("input, textarea, select");
+
+  fields.forEach(field => {
+    if (field.tagName === "SELECT") {
+      field.disabled = readonly; // selects don’t have readonly, use disabled
+    } else {
+      field.readOnly = readonly;
+    }
+  });
+}
+
+
+export function confirmSendSMS(callBack)
+{
+  MosyAlertCard({message:"Submit collection details?\I have ensured all details are correctly filled", yesLabel:"Yes submit", noLabel:"Cancel",onYes:()=>{
+    if(callBack) callBack()
+  }} )
+}
+
+export async function sendSMSAfterDataSubmission(handleInputChange, setters={})
+{
+  
+  await milkcollectionsProfileData("",setters)
+
+  formartGradersMessage(true,handleInputChange)
+
+}
+

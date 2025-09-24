@@ -14,6 +14,7 @@ import { customEventHandler } from '../../DataControl/customDataFunction';
 //routes manager
 ///handle routes 
 import { getApiRoutes } from '../../AppRoutes/apiRoutesHandler';
+import { setFormInputsReadonly } from '../../AppCore/coreUtils';
 
 // Use default base root (/)
 const apiRoutes = getApiRoutes();
@@ -335,6 +336,14 @@ export async function milkcollectionsProfileData(customQueryStr, setters, router
       popDeleteDialog(milkcollectionsTokenId, setters, router)
     }
     
+    
+    if(profileDataRecord?.primkey)
+      {
+      console.log("Milk collections data loaded status:", profileDataRecord);
+        
+        setFormInputsReadonly("milk_collections_profile_form")
+      }
+
     // Merge with custom injected values (custom wins)
     const finalProfileData = {
       ...profileDataRecord,
